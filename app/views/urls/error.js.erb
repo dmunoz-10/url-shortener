@@ -1,0 +1,16 @@
+function error() {
+  let url_url = document.getElementById('url_url');
+  url_url.classList.add('bg-red-400', 'border-red-700', 'text-white');
+
+  let error_class = 'hidden';
+  let error_url = document.getElementById('error_url');
+  error_url.classList.remove(error_class);
+
+  let short_url = document.getElementById('short_url');
+  short_url.innerHTML = '';
+
+  let div_short_url = document.getElementById('div_short_url');
+  div_short_url.classList.add('hidden');
+}
+
+error();

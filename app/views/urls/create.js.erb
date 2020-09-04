@@ -1,0 +1,16 @@
+function created() {
+  let short_url = document.getElementById('short_url');
+  short_url.innerHTML = '<%= show_url_url @url %>';
+
+  let url_url = document.getElementById('url_url');
+  url_url.value = '';
+  url_url.classList.remove('bg-red-400', 'border-red-700', 'text-white');
+
+  let div_short_url = document.getElementById('div_short_url');
+  div_short_url.classList.remove('hidden');
+
+  let error_url = document.getElementById('error_url');
+  error_url.classList.add('hidden');
+}
+
+created();

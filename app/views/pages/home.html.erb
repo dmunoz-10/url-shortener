@@ -1,0 +1,59 @@
+<div class="flex-1 bg-blue-200 w-full items-center">
+  <div class="leading-loose">
+    <div class="max-w-xl mx-auto m-4 p-10 bg-blue-100 rounded shadow-xl">
+      <h3 class="text-gray-800 text-2xl uppercase font-medium text-center mb-5">Short url generator</h3>
+
+      <%= simple_form_for @url, remote: true do |f| %>
+        <div class="md:flex md:items-start mb-4">
+          <div class="md:w-1/6">
+            <label class="block text-gray-500 font-bold md:text-right mb-1 mt-0 md:mb-0 md:mt-1 pr-4 uppercase text-lg" for="url_url">
+              Url
+            </label>
+          </div>
+          <div class="md:w-5/6">
+            <%= f.input :url, input_html: {
+                                class: 'bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500',
+                                placeholder: 'https://www.example.com'
+                              },
+                              required: true,
+                              label: false,
+                              hint: '*Take in mind that url will be available just for a week',
+                              hint_html: { class: 'text-sm' } %>
+            <p class="bg-red-500 text-white border-red-800 rounded px-3 hidden" id="error_url">Url is invalid</p>
+          </div>
+        </div>
+
+        <div class="mt-4 text-center">
+          <button class="px-4 py-1 text-white font-light tracking-wider bg-gray-900 hover:bg-gray-800 rounded" type="submit">Get short url</button>
+        </div>
+      <% end %>
+    </div>
+
+    <div id="div_short_url" class="max-w-xl mx-auto m-4 p-5 bg-blue-100 rounded shadow-xl hidden">
+      <h3 class="text-gray-800 text-2xl uppercase font-medium text-center mb-5">Url Generated</h3>
+
+      <div class="w-full bg-gray-900 text-gray-300 rounded px-1 flex cursor-pointer" onclick="copyToClipboard()">
+        <p class="py-3 w-9/12" id="short_url"></p>
+        <script>
+          function copyToClipboard() {
+            const text = document.getElementById('short_url');
+            const selection = window.getSelection();
+            const range = document.createRange();
+            range.selectNodeContents(text);
+            selection.removeAllRanges();
+            selection.addRange(range);
+            document.execCommand('copy');
+            selection.removeAllRanges();
+
+            let span_copy = document.getElementById('span_copy');
+            span_copy.innerHTML = 'Copied!';
+            setTimeout(() => {
+              span_copy.innerHTML = 'Click to Copy';
+            }, 5000)
+          }
+        </script>
+        <span id="span_copy" class="w-3/12 h-5 uppercase text-xs font-thin float-right mt-1 text-center bg-white text-black rounded">Click to Copy</span>
+      </div>
+    </div>
+  </div>
+</div>

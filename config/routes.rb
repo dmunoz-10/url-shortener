@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  root to: 'pages#home'
+
+  get '/:id', to: 'urls#show', as: :show_url
+  post '/urls', to: 'urls#create', as: :urls
+
+  get '*unmatched_route', to: 'application#not_found'
 end

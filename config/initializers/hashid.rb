@@ -11,7 +11,7 @@ Hashid::Rails.configure do |config|
                     '1234567890'
 
   # Whether to override the `find` method
-  config.override_find = false
+  config.override_find = true
 
   # Whether to override the `to_param` method
   config.override_to_param = true

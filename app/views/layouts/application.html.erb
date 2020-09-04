@@ -10,7 +10,11 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="flex flex-col h-full">
+    <%= render partial: 'partials/header' %>
+
     <%= yield %>
+
+    <%= render partial: 'partials/footer' %>
   </body>
 </html>

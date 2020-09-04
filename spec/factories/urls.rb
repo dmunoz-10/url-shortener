@@ -2,6 +2,6 @@
 
 FactoryBot.define do
   factory :url do
-    url { FFaker::Youtube.url }
+    url { FFaker::Internet.http_url }
   end
 end

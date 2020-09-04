@@ -9,12 +9,12 @@ class UrlsController < ApplicationController
     if @url.save
       render :create, status: :created
     else
-      render :error
+      render :error, status: :unprocessable_entity
     end
   end
 
   def show
-    if @url&.valid_url?
+    if @url&.available?
       redirect_to @url.url
     else
       render :show

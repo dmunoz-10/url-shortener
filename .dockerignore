@@ -1,0 +1,15 @@
+# Ignore git
+.git
+.gitignore
+
+# Ignore node_modules
+node_modules
+
+# Ignore byebug log
+.byebug_history
+
+# Ignore test coverage
+coverage
+
+# Ignore Rails log
+log
